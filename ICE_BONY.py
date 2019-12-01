@@ -38,31 +38,6 @@ def readFastaFile1(filename) :
             s = s + line
     return(s)
 
-# readFastaFile2
-# PARAMETERS : the filename (the file is in fasta format)
-# RETURNS : a list with all the protein sequences
-# @author: ebecker
-def readFastaFile2(filename) :
-
-    # opening the file whose name is filename
-    fd = open(filename,'r')
-    txt = fd.read()
-    fd.close()
-
-    # txt contains all the text of the file.
-    # fisrt, I want to seperate the proteins, the symbol that starts a new protein is '>'
-    seqs = txt.split('>')[1:]
-    listSeq = []
-
-    for seq in seqs :
-        lines = seq.split('\n')[1:]
-        s = ""
-        for line in lines :
-            s = s + line
-        listSeq.append(s)
-
-    return(listSeq)
-
 # lire_word
 # PARAMETERS : filename (in txt format)
 # RETURNS : a list with all the words
@@ -217,7 +192,6 @@ def plot_bar_trouve_pas_trouve(w,word_not_found):
 # Importing Data
 print('Importing Data...')
 proteome=readFastaFile1('human-proteome.fasta')
-lproteome=readFastaFile2('human-proteome.fasta')
 word = lire_word("english-words.txt")
 print('Data successfully imported')
 
